@@ -1,6 +1,7 @@
 from importlib import import_module
 import spacy
 from errant.annotator import Annotator
+import os
 
 # ERRANT version
 __version__ = '2.2.3'
@@ -13,6 +14,7 @@ def load(lang, nlp=None):
         raise Exception("%s is an unsupported or unknown language" % lang)
 
     # Load spacy
+    os.system('python -m spacy download en_core_web_sm')
     nlp = nlp or spacy.load('en-core-web-sm', disable=["ner"])
 
     # Load language edit merger
